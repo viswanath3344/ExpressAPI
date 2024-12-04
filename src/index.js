@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const authRoute = require("./Routes/authRoutes");
 
 const app = express();
+app.use(authRoute);
 
 const uri = "mongodb+srv://viswanath3344:Password@tracker.wxot5.mongodb.net/?retryWrites=true&w=majority&appName=Tracker"
 
