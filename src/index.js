@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(authRoute);
 app.use("/track", trackRoute);
 
-const uri = "mongodb+srv://viswanath3344:Password@tracker.wxot5.mongodb.net/?retryWrites=true&w=majority&appName=Tracker"
+const uri = "mongodb+srv://viswanath3344:Password@tracker.wxot5.mongodb.net/?retryWrites=true&w=majority&appName=Tracker";
 
  mongoose.connect(uri, {
     autoIndex: true

@@ -33,11 +33,10 @@ user.pre("save", function(next) {
             next();
         });
     })
-
 })
 
 user.methods.comparePassword = function(candidatePassword) {
-    const user = this
+    const user = this;
 
     return new Promise((resolve, reject) => {
         bcrypt.compare(candidatePassword, user.password, (err, isMatched) => {

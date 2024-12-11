@@ -18,9 +18,9 @@ router.post("/signup", async (req, res) => {
         });
 
     } catch (err) {
-        res.status(422).send({ message: "Registration failed" })
+        res.status(422).send({ message: "Registration failed" });
     }
-})
+});
 
 
 router.post("/signin", async (req, res) => {
@@ -33,7 +33,7 @@ router.post("/signin", async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-        return res.status(422).send({ message: "Invalid username" })
+        return res.status(422).send({ message: "Invalid username" });
     }
 
     try {
@@ -41,17 +41,17 @@ router.post("/signin", async (req, res) => {
 
         console.log("isMatched", isMatched);
         if (!isMatched) {
-            return res.status(422).send({ message: "Invalid credentials" })
+            return res.status(422).send({ message: "Invalid credentials" });
         }
 
         const token = JWT.sign({ id: user._id }, "MY_SECRET_KEY");
 
-       return res.status(200).send({ message: "Login success", token })
+       return res.status(200).send({ message: "Login success", token });
 
     } catch (err) {
-        return res.status(422).send({ message: "Invalid Credentials" })
+        return res.status(422).send({ message: "Invalid Credentials" });
     }
 
-})
+});
 
 module.exports = router;

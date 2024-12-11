@@ -9,10 +9,10 @@ router.use(requireAuth);
 
 router.get("/", async (req, res) => {
     const userId = req.user._id;
-    
+
     if (!userId) {
         const message = "Invalid user ID";
-        return res.status(422).send({ message })
+        return res.status(422).send({ message });
     }
 
     const tracks = await Track.find({ userId });
@@ -30,7 +30,7 @@ router.post("/add", async (req, res) => {
     const track = new Track({name, locations, userId});
     await track.save();
 
-    return res.send({ track })
+    return res.send({ track });
 })
 
 module.exports = router;

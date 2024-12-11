@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
-      return res.status(404).send({message: "Incorrect Authorization"})
+      return res.status(404).send({message: "Incorrect Authorization"});
     }
 
     const token = authorization.replace("Bearer ", "");
