@@ -9,17 +9,13 @@ router.use(requireAuth);
 
 router.get("/", async (req, res) => {
     const userId = req.user._id;
+    
     if (!userId) {
         const message = "Invalid user ID";
         return res.status(422).send({ message })
     }
 
     const tracks = await Track.find({ userId });
-
-    // const userId = req.user._id;
-    // const track = new Track({name, locations, userId});
-    // await track.save();
-
     return res.send({ tracks })
 });
 
