@@ -11,11 +11,10 @@ module.exports = (req, res, next) => {
     }
 
     const token = authorization.replace("Bearer ", "");
-    console.log(token);
     
     JWT.verify(token, "MY_SECRET_KEY", async (err, payload) => {
        if(err){
-        return res.send(404).send({message: "Incorrect user authentication"});
+        return res.status(404).send({message: "Incorrect user authentication"});
        }
 
        const { id } = payload;

@@ -3,16 +3,18 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 require("./models/user");
+require("./models/track");
 
 // Order should be down to the mongoose model loading. 
 const authRoute = require("./routes/authRoutes");
-
 const requireAuth = require("../src/middlewares/requireAuth");
+const trackRoute = require("./routes/trackRoutes");
 
 const app = express();
 app.use(bodyParser.json());
 
 app.use(authRoute);
+app.use("/track", trackRoute);
 
 const uri = "mongodb+srv://viswanath3344:Password@tracker.wxot5.mongodb.net/?retryWrites=true&w=majority&appName=Tracker"
 
