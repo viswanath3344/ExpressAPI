@@ -7,6 +7,8 @@ require("./models/user");
 // Order should be down to the mongoose model loading. 
 const authRoute = require("./routes/authRoutes");
 
+const requireAuth = require("../src/middlewares/requireAuth");
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -26,8 +28,8 @@ mongoose.connection.on("error", (err)=> {
     console.error("Connection failed with ", err);
 })
 
-app.get("/",(req, res) => {
-    return res.send("Hi There !!!")
+app.get("/", requireAuth ,(req, res) => {
+    return res.send("Hi There !!!, I am " + req.user.email)
 })
 
 app.listen(3000, () => {

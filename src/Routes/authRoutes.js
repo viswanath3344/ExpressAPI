@@ -1,3 +1,4 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const User = mongoose.model('User');
@@ -15,6 +16,7 @@ router.post("/signup", async (req, res) => {
         message: "Registration Success", 
         token
     });
+
     }catch (err) {
       res.status(422).send({message: "Registration failed"})
     }
